@@ -1,1 +1,187 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import "~materialize-css/dist/css/materialize.css";
+@import "~material-icons/iconfont/material-icons.css";
+
+:root {
+  --primaryColor: rgb(241, 236, 236);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+  list-style: none;
+  border: 0;
+}
+
+body,
+html {
+  background-color: #fdf8f8 !important;
+}
+
+hr {
+  width: 20% !important;
+  border-bottom-color: var(--primaryColor);
+  border-width: medium;
+}
+
+.my-invalid-input {
+  border-color: rgb(17, 17, 17) !important;
+  border-left-width: medium !important;
+}
+
+.my-font {
+  font-family: "airborne";
+}
+
+.my-header {
+  padding: 1em 0em;
+  font-weight: 600;
+}
+
+.my-content-header {
+  font-weight: 600;
+}
+
+.my-wrapper-select {
+  margin-bottom: 2em;
+}
+
+.my-year {
+  text-decoration: underline;
+  font-weight: bold;
+  padding: 1em;
+}
+
+.my-panel-content {
+  text-align: justify;
+}
+
+.my-center {
+  display: block;
+  margin: auto;
+}
+
+.my-card-button {
+  cursor: pointer;
+}
+
+table > tbody > tr {
+  cursor: pointer;
+}
+
+.my-selected-table-row {
+  background-color: #f1f0f7;
+}
+
+/**
+	Estilo about
+*/
+
+.about .col {
+  margin-bottom: 24px;
+}
+
+.about h5 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.about h6 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 45px;
+}
+
+.about hr {
+  width: 40px;
+  margin-bottom: 45px;
+}
+
+.about .card {
+  text-align: center;
+}
+
+.about .card img {
+  margin-bottom: 15px;
+}
+
+/**
+	Estilo do index
+*/
+
+.intro {
+  text-align: center;
+  padding-top: 13%;
+  padding-bottom: 13%;
+  min-height: 680px;
+  margin-bottom: 50px;
+  background-image: url("/assets/resources/images/corrida.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.intro h1 {
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.intro h5 {
+  text-transform: uppercase;
+  background-color: #f3f0f0;
+  padding: 10px;
+  color: #f0e6e6;
+  display: inline-block;
+  font-size: 1.2rem;
+}
+
+/**
+	Estilo do contato
+*/
+
+.contact .col {
+  margin-bottom: 24px;
+}
+
+.contact h5 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.contact h6 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 45px;
+}
+
+.contact hr {
+  width: 40px;
+  margin-bottom: 45px;
+}
+
+.contact .contact-holder {
+  padding-left: 40px;
+  text-align: left;
+}
+
+.contact .contact-holder h6 {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.contact .contact-holder p {
+  margin-bottom: 30px;
+}
+
+/**
+	Saldo
+*/
+
+.my-balance {
+  padding: 20px 0px !important;
+  font-size: 3em;
+  font-family: "airborne";
+  text-align: center;
+}
