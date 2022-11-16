@@ -13,7 +13,6 @@ export class AppComponent implements AfterViewInit{
   title = 'treinos-corrida-app';
 
   ngAfterViewInit(): void{
-    M.Sidenav.init (this.sideNav?.nativeElement);
-    
+    M.Sidenav.init (this.sideNav?.nativeElement);    
   }
 }
