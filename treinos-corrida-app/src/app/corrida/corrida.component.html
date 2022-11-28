@@ -1,23 +1,54 @@
-
 <div class="container contact">
-    <h5>Corrida</h5>
+    <h5>Cadastro de Corridas</h5>
     <h6>Cadastre sua corrida</h6>
     <hr />
   
     <div class="row">
+      <div class="col s12">
+        <div
+          id="msg-corrida"
+          class="card-panel white-text"
+          [class.red]="!this.isSuccess"
+          [class.blue]="this.isSuccess"
+          *ngIf="this.isShowMessage"
+        >
+          {{ this.message }}
+        </div>
+      </div>
      
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <input          
+      <form class="col s12" #form="ngForm" (submit)="onSubmit()">        
+        <div class="input-field col s12">
+          <input 
+            id="input-id"         
+            name="input-id"
+            type="text"
+            class="validate"
+            [(ngModel)]="this.corrida.id"
+            pattern="^([0-9]*)+"
+            #id="ngModel"
+            required            
+          />
+          <label for="input-id">Id *</label>
+          <div class="red-text" [hidden]="id.valid || id.untouched">
+            Por favor, informe o id.
+          </div>
+        </div>  
+        
+        <div class="input-field col s12">
+            <input 
+              id="input-calorias"         
               name="input-calorias"
               type="text"
               class="validate"
-              pattern="^[0-9]+)*"
-              required
+              [(ngModel)]="this.corrida.calorias"
+              pattern="^([0-9]*)+"
+              #calorias="ngModel"
+              required            
             />
-            <label for="input-username">Calorias</label>
-          </div>
+            <label for="input-calorias">Calorias *</label>
+            <div class="red-text" [hidden]="calorias.valid || calorias.untouched">
+              Por favor, informe a quantidade de calorias.
+            </div>
         </div>
 
         <div class="input-field col s12">
@@ -26,20 +57,33 @@
             name="input-intensidade" 
             type="text" 
             class="validate" 
-            pattern="^[a-zA-Z]+)*"
-              required />
-            <label for="input-username">Intensidade *</label>
-            
+            [(ngModel)]="this.corrida.intensidade"
+            pattern="^([a-zA-Z])*"
+            #intensidade="ngModel"
+            required 
+            />
+            <label for="input-intensidade">Intensidade *</label>
+            <div class="red-text" [hidden]="intensidade.valid || intensidade.untouched">
+              Por favor, informe a intensidade da corrida.
+            </div>
           </div>
           <div class="input-field col s12">
             <input 
             id="input-tempo" 
             name="input-tempo" 
             type="text" 
-            class="validate" 
-            pattern="^[0-9]+)*"
-              required />
-            <label for="input-username">Tempo em atividade *</label>        
+            class="validate"
+            [(ngModel)]="this.corrida.tempo" 
+            pattern="^([0-9])*"
+            #tempo="ngModel"
+            required />
+            <label for="input-tempo">Tempo em atividade *</label>
+            <div class="red-text" [hidden]="tempo.valid || tempo.untouched">
+              Por favor, informe o tempo de atividade.
+            </div> 
+            <div class="red-text" *ngIf="tempo.touched">
+              Por favor, o campo tempo é obrigatório.
+            </div>       
           </div>
            
           <div class="input-field col s12">
@@ -47,29 +91,83 @@
             id="input-frequenciaCardiaca" 
             name="input-frequenciaCardiaca" 
             type="text" 
-            class="validate" 
-            pattern="^[0-9]+)*"
-              required />
-            <label for="input-username">Frequencia Cardiaca *</label>
-            
+            class="validate"
+            [(ngModel)]="this.corrida.frequenciaCardiaca"  
+            pattern="^([0-9])*"
+            #frequenciaCardiaca="ngModel"
+            required />
+            <label for="input-frequenciaCardiaca">Frequencia Cardiaca *</label>
+            <div class="red-text" [hidden]="tempo.valid || tempo.untouched">
+              Por favor, informe a Frequencia cardiaca média.
+            </div>
+          </div> 
+
         <button
-          class="btn waves-effect waves-light amber darken-4"
+          class="btn waves-effect waves-light blue darken-4"
           type="submit"
-          name="action"
+          [disabled]="!form.valid"
         >
           Cadastrar
           <i class="material-icons right">send</i>
         </button>
-          </div>
       </form>
     </div>
+
+    <h5>Corridas cadastrados</h5>
+    <!-- Tabela de Corridas -->
+    <table class="highlight" *ngIf="corridas && corridas!.length > 0">
+      <thead>
+        <tr>
+          <th>Quantidade de calorias</th>
+          <th>Intensidade da corrida</th>
+          <th>Tempo de exercício</th>
+          <th>Frequencia cardiaca média</th>
+          <th></th>
+        </tr>
+      </thead>
   
-    
-    <!-- link home -->
-    <div class="row">
+      <tbody>
+        <tr *ngFor="let c of corridas">
+          <td>{{ c.calorias }}</td>
+          <td>{{ c.intensidade }}</td>
+          <td>{{ c.tempo }}</td>
+          <td>{{ c.frequenciaCardiaca | currency: "BRL" }}</td>
+          <td class="right">
+            <a
+              ><i class="material-icons my-icon-size" (click)="onEdit(c)"
+                >edit</i
+              ></a
+            >
+            <a
+              ><i
+                class="material-icons my-icon-size"
+                (click)="onDelete(c.id)"
+                >delete</i
+              ></a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="!corridas || corridas!.length == 0">
+      <div class="row">
+        <div class="center-align">
+          <i class="col s12 material-icons large">mood_bad</i>
+          <span class="col s12 flow-text"
+            >Ainda não temos corridas cadastrados!</span
+          >
+        </div>
+      </div>
+    </div>
+
+     <!-- link home -->
+     <div class="row">
       <div class="col s12 m6 offset-m3 center">
         <a href="/index.html"> VOLTAR AO MENU PRINCIPAL </a>
       </div>
     </div>
     <!-- link home -->
+
+
   </div>
