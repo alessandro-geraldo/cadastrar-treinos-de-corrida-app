@@ -1,0 +1,46 @@
+{
+  "runs": [
+    {
+      "id": 1,
+      "calorias": 300,
+      "intensidade": "media",
+      "tempo": 45,
+      "frequenciaCardiaca": 155
+    },
+    {
+      "id": 2,
+      "calorias": 222,
+      "intensidade": "media",
+      "tempo": 50,
+      "frequenciaCardiaca": 165
+    },
+    {
+      "id": 3,
+      "calorias": 350,
+      "intensidade": "media",
+      "tempo": 55,
+      "frequenciaCardiaca": 166
+    },
+    {
+      "id": 4,
+      "calorias": 400,
+      "intensidade": "alta",
+      "tempo": 40,
+      "frequenciaCardiaca": 188
+    },
+    {
+      "id": 5,
+      "calorias": 355,
+      "intensidade": "baixa",
+      "tempo": 40,
+      "frequenciaCardiaca": 145
+    },
+    {
+      "id": 7,
+      "calorias": 450,
+      "intensidade": "media",
+      "tempo": 45,
+      "frequenciaCardiaca": 155
+    }
+  ]
+}

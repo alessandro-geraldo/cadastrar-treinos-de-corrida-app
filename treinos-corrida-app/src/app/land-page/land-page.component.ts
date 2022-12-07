@@ -1,4 +1,7 @@
+import { CorridaService } from './../services/corrida.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-land-page',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandPageComponent implements OnInit {
   imageURL: string = 'assets/resources/images/corrida.jpg';
-  constructor() { }
+  subscription!: Subscription;
+  constructor(private router: Router, private corridaService: CorridaService) {
+      console.log('observer - land-page');
+    
+   }
 
   ngOnInit(): void {
   }

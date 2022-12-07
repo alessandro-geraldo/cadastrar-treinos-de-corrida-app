@@ -1,0 +1,5 @@
+{
+    "/runs/type/:t": "/runs?type=:t",
+    "/corridas": "/runs",
+    "/corridas/:id": "/runs/:id"
+  }
