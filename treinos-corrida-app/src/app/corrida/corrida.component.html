@@ -38,7 +38,7 @@
             <input 
               id="input-calorias"         
               name="input-calorias"
-              type="text"
+              type="number"
               class="validate"
               [(ngModel)]="this.corrida.calorias"
               pattern="^([0-9]*)+"
@@ -67,11 +67,12 @@
               Por favor, informe a intensidade da corrida.
             </div>
           </div>
+
           <div class="input-field col s12">
             <input 
             id="input-tempo" 
             name="input-tempo" 
-            type="text" 
+            type="number" 
             class="validate"
             [(ngModel)]="this.corrida.tempo" 
             pattern="^([0-9])*"
@@ -90,14 +91,14 @@
             <input 
             id="input-frequenciaCardiaca" 
             name="input-frequenciaCardiaca" 
-            type="text" 
+            type="number" 
             class="validate"
             [(ngModel)]="this.corrida.frequenciaCardiaca"  
             pattern="^([0-9])*"
             #frequenciaCardiaca="ngModel"
             required />
             <label for="input-frequenciaCardiaca">Frequencia Cardiaca *</label>
-            <div class="red-text" [hidden]="tempo.valid || tempo.untouched">
+            <div class="red-text" [hidden]="frequenciaCardiaca.valid || frequenciaCardiaca.untouched">
               Por favor, informe a Frequencia cardiaca média.
             </div>
           </div> 

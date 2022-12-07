@@ -1,13 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Corrida } from '../model/corrida';
-import {CorridaService} from './corrida.service';
+import {CorridaService} from '../services/corrida.service';
 import { Shared } from '../util/Shared';
+import { CorridaStorageService } from './corrida-storage.service';
+
 
 @Component({
   selector: 'app-corrida',
   templateUrl: './corrida.component.html',
-  styleUrls: ['./corrida.component.css']
+  styleUrls: ['./corrida.component.css'],
+  providers: [CorridaService]
 })
 export class CorridaComponent implements OnInit {
   @ViewChild('form') form!: NgForm;
@@ -21,7 +24,7 @@ export class CorridaComponent implements OnInit {
   isSuccess!: boolean;
   message!: string;
 
-  constructor(private corridaService: CorridaService) { }
+  constructor(private corridaService: CorridaStorageService) { }
 
   ngOnInit(): void {
     Shared.initializeWebStorage(); 
@@ -38,7 +41,7 @@ export class CorridaComponent implements OnInit {
     this.isSuccess = true;
     this.message = 'Cadastro realizado com sucesso!';
     this.form.reset();
-    this.corrida = new Corrida(0);
+    this.corrida = new Corrida("");
     this.corridas = this.corridaService.getUsers();
   }
 
@@ -53,7 +56,7 @@ export class CorridaComponent implements OnInit {
       this.corrida = clone;
     }
   
-    onDelete(id: number) {
+    onDelete(id: string) {
       let confirmation = window.confirm(
         'Você tem certeza que deseja remover ' + id
       );

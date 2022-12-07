@@ -1,11 +1,11 @@
 export class Corrida {
-    id: number;
+    id!: string;
     calorias?: number;
     intensidade?: number;
     tempo?: number;
     frequenciaCardiaca?: number;
 
-    constructor(id: number){
+    constructor(id: string){
         this.id = id;
     }
     
