@@ -81,10 +81,7 @@
             <label for="input-tempo">Tempo em atividade *</label>
             <div class="red-text" [hidden]="tempo.valid || tempo.untouched">
               Por favor, informe o tempo de atividade.
-            </div> 
-            <div class="red-text" *ngIf="tempo.touched">
-              Por favor, o campo tempo é obrigatório.
-            </div>       
+            </div>      
           </div>
            
           <div class="input-field col s12">
@@ -129,10 +126,10 @@
   
       <tbody>
         <tr *ngFor="let c of corridas">
-          <td>{{ c.calorias }}</td>
-          <td>{{ c.intensidade }}</td>
+          <td>{{ c.calorias | number }}</td>
+          <td>{{ c.intensidade |  uppercase }}</td>
           <td>{{ c.tempo }}</td>
-          <td>{{ c.frequenciaCardiaca | currency: "BRL" }}</td>
+          <td>{{ c.frequenciaCardiaca | number }}</td>
           <td class="right">
             <a
               ><i class="material-icons my-icon-size" (click)="onEdit(c)"
@@ -154,7 +151,7 @@
     <div *ngIf="!corridas || corridas!.length == 0">
       <div class="row">
         <div class="center-align">
-          <i class="col s12 material-icons large">mood_bad</i>
+          <i class="col s12 material-icons large">no_backpack</i>
           <span class="col s12 flow-text"
             >Ainda não temos corridas cadastrados!</span
           >
