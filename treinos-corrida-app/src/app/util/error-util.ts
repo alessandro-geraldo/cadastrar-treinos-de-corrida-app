@@ -19,7 +19,7 @@ export class ErrorUtil {
     //return throwError(error);
 
     //retorna um Error
-    return throwError(new Error(errorMessage));
+    //return throwError(new Error(errorMessage));
 
     //retorna um Error
     //return throwError(Error(errorMessage));
@@ -28,7 +28,7 @@ export class ErrorUtil {
     //return throwError(errorMessage);
 
     //retorna uma função
-    //return throwError(() => new Error(errorMessage));
+    return throwError(() => new Error(errorMessage));
   }
 
   private static getServerErrorMessage(error: HttpErrorResponse) {

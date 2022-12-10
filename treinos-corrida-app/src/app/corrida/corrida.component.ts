@@ -10,7 +10,7 @@ import { CorridaStorageService } from './corrida-storage.service';
   selector: 'app-corrida',
   templateUrl: './corrida.component.html',
   styleUrls: ['./corrida.component.css'],
-  providers: [CorridaService]
+  providers: [CorridaStorageService]
 })
 export class CorridaComponent implements OnInit {
   @ViewChild('form') form!: NgForm;
@@ -27,7 +27,9 @@ export class CorridaComponent implements OnInit {
   constructor(private corridaService: CorridaStorageService) { }
 
   ngOnInit(): void {
-    Shared.initializeWebStorage(); 
+    Shared.initializeWebStorage();
+    this.corrida = new Corrida('');
+    this.corridas = this.corridaService.getUsers(); 
   }
 
   onSubmit() {

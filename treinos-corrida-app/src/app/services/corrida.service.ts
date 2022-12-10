@@ -49,7 +49,10 @@ export class CorridaService {
     );
   }
 
-  getUsers(): Corrida[] {
-    return this.corridas;
+  getCorridas(): Observable<Corrida[]> {
+    const query: HttpParams = new HttpParams();
+    return this.httpClient.get<Corrida[]>(`${RoutesAPI.CORRIDAS}`).pipe(
+      catchError(ErrorUtil.handleError)
+    );
   }
 }

@@ -1,7 +1,7 @@
 export class Corrida {
     id!: string;
     calorias?: number;
-    intensidade?: number;
+    intensidade?: string;
     tempo?: number;
     frequenciaCardiaca?: number;
 

@@ -16,17 +16,17 @@ export class CorridaPromiseService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getByUsername(id: string): Promise<Corrida[], undefined> {
-    return this.httpClient.get<Corrida[]>(`${this.URL_PT}/${id}`).toPromise();
+  getByUsername(id: string): Promise<Corrida[] | undefined> {
+    return this.httpClient.get<Corrida[]>(`${this.URL}/${id}`).toPromise();
   }
 
-  save(corrida: Corrida): Promise<Corrida, undefined> {
+  save(corrida: Corrida): Promise<Corrida | undefined> {
     return this.httpClient
       .post<Corrida>(this.URL, JSON.stringify(corrida), this.httpOptions)
       .toPromise();
   }
 
-  patch(corrida: Corrida): Promise<Corrida> {
+  patch(corrida: Corrida): Promise<Corrida | undefined> {
     return this.httpClient
       .patch<Corrida>(
         `${this.URL}/${corrida.id}`,
@@ -36,7 +36,7 @@ export class CorridaPromiseService {
       .toPromise();
   }
 
-  update(corrida: Corrida): Promise<Corrida> {
+  update(corrida: Corrida): Promise<Corrida | undefined> {
     return this.httpClient
       .put<Corrida>(
         `${this.URL}/${corrida.id}`,

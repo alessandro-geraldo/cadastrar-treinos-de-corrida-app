@@ -4,13 +4,12 @@ import { Injectable } from '@angular/core';
 import { Corrida } from '../model/corrida';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CorridaStorageService {
   corridas!: Corrida[];
-  private userSource!: BehaviorSubject<number>;
+  private corridaSource!: BehaviorSubject<number>;
   constructor() {
+    this.corridas = WebStorageUtil.get("runs");
  
   }
 
@@ -33,6 +32,7 @@ export class CorridaStorageService {
   }
 
   isExist(value: string): boolean {
+    this.corridas = WebStorageUtil.get("runs");
     for (let u of this.corridas) {
       if (u.id?.valueOf() == value?.valueOf()) {
         return true;
@@ -41,15 +41,11 @@ export class CorridaStorageService {
     return false;
   }
 
-  getUsers(): Corrida[] {
-    return this.corridas;
-  }
-
-  notifyTotalUsers() {
-    this.userSource.next(this.getUsers()?.length);
+  getUsers(): Corrida[] {   
+    return this.corridas = WebStorageUtil.get("runs");
   }
 
   asObservable(): Observable<number> {
-    return this.userSource;
+    return this.corridaSource;
   }
 }
