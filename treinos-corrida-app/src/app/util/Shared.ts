@@ -9,7 +9,7 @@ export class Shared {
 	Só realiza o cadastro caso o usuário ainda não esteja salvo no WebStorage.
 */
   public static initializeWebStorage(): void {
-    if (localStorage.getItem("runs") != null){
+    if (localStorage.getItem("") != null){
       return;
     }
 

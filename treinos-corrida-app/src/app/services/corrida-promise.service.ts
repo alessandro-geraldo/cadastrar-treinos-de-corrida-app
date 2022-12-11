@@ -16,8 +16,8 @@ export class CorridaPromiseService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getByUsername(id: string): Promise<Corrida[] | undefined> {
-    return this.httpClient.get<Corrida[]>(`${this.URL}/${id}`).toPromise();
+  getByCorrida(): Promise<Corrida[] | undefined> {
+    return this.httpClient.get<Corrida[]>(`${this.URL}`).toPromise();
   }
 
   save(corrida: Corrida): Promise<Corrida | undefined> {
