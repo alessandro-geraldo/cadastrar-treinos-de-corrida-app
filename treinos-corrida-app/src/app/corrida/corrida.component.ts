@@ -1,9 +1,11 @@
+import { CorridaPromiseService } from './../services/corrida-promise.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Corrida } from '../model/corrida';
 import {CorridaService} from '../services/corrida.service';
 import { Shared } from '../util/Shared';
 import { CorridaStorageService } from './corrida-storage.service';
+import { WebStorageUtil } from '../util/web-storage-util';
 
 
 @Component({
@@ -24,12 +26,25 @@ export class CorridaComponent implements OnInit {
   isSuccess!: boolean;
   message!: string;
 
-  constructor(private corridaService: CorridaStorageService) { }
+  constructor(
+    private corridaService: CorridaStorageService,
+    private corridaPromiseService: CorridaPromiseService
+    ) { }
 
   ngOnInit(): void {
     Shared.initializeWebStorage();
     this.corrida = new Corrida('');
-    this.corridas = this.corridaService.getUsers(); 
+    this.corridas = this.corridaService.getUsers();
+    this.corridaPromiseService
+    .getByCorrida()
+    .then((c: Corrida[] | undefined) => {
+      this.corrida = c![0];
+      localStorage.setItem(this.corrida.id, JSON.stringify(this.corrida));
+    })
+    .catch((e) => {
+      //erro ao pegar do json-server
+      this.corrida = WebStorageUtil.get(this.corrida.id);
+    }); 
   }
 
   onSubmit() {
